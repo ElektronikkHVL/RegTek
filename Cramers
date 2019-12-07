@@ -1,0 +1,29 @@
+%%
+% Cramers regel for å regne ut Transferfunksjon i 2 ligningssystem.
+% ligningene er a*X1+b*X2 = 0(A)  og b*X1+c*X2 = F(s)(B)
+clear
+clc
+syms  s X1 X2 A B F(s) x y
+
+D1 = 3
+k1 = 4
+m1 = 1 
+k2 = 5
+D2 = 3 
+m2 = 2 
+D3 = 2
+
+a = (m1*s^(2) + s*(D1+D2)+k1+k2)
+b = (-s*D2-k2)
+c = (-s*D2-k2)
+d = (s^(2) * m2 + s*D2 + k2 + s*D3)
+A = 0
+B = F(s)
+
+D = det([a b; c d])
+Dx = det([A b; B c])
+
+X1(s) = Dx/D
+
+H(s)=X1(s)/F(s)
+pretty(H(s))
