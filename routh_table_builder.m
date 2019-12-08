@@ -35,14 +35,14 @@ function r_table = routh_table_builder(den)
             
             if value == 0
                 zero_counter = zero_counter + 1;
-                if (zero_counter == nr_cols - 2)
+                if (zero_counter == nr_cols - 1)
                     r_table(m, 2:nr_cols) = diff_without_syms(r_table(m-1, 2:nr_cols));
                 elseif ((r_table(m, 2) == 0) && (n == nr_cols - 1))
                     syms e
                     r_table(m,2) = e;
                 end
             else
-                r_table(m, n) = collect(value); 
+                r_table(m, n) = collect(value);
             end
         end
     end         
